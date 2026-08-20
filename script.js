@@ -296,7 +296,19 @@ document.querySelectorAll('.project-card').forEach(card => {
 // ===================================
 // DOWNLOAD CV BUTTON
 // ===================================
-document.querySelector('.btn-download')?.addEventListener('click', () => {
+document.querySelector('.btn-download')?.addEventListener('click', function(event) {
+    const ripple = document.createElement('span');
+    const buttonBounds = this.getBoundingClientRect();
+    const rippleSize = Math.max(buttonBounds.width, buttonBounds.height) * 1.5;
+
+    ripple.className = 'click-ripple';
+    ripple.style.width = `${rippleSize}px`;
+    ripple.style.height = `${rippleSize}px`;
+    ripple.style.left = `${event.clientX - buttonBounds.left - rippleSize / 2}px`;
+    ripple.style.top = `${event.clientY - buttonBounds.top - rippleSize / 2}px`;
+    this.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+
     showNotification('CV download feature coming soon!', 'info');
 });
 
