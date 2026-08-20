@@ -276,6 +276,41 @@ button, input, textarea, select {
   background: transparent;
   color: #1f2937;
 }
+.btn-download {
+  border-radius: 50px;
+}
+.nav-actions .btn-download {
+  border-radius: 50px;
+}
+.nav-actions .btn-download:active {
+  transform: scale(0.9);
+  background: rgba(0, 102, 255, 0.16);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.28), 0 0 0 4px rgba(0, 102, 255, 0.14);
+}
+.nav-actions .btn-download:focus-visible {
+  outline: 3px solid rgba(0, 102, 255, 0.35);
+  outline-offset: 3px;
+}
+.btn-download .click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 102, 255, 0.5);
+  transform: scale(0);
+  pointer-events: none;
+  z-index: 0;
+  animation: button-ripple 700ms ease-out;
+}
+.btn-download > i,
+.btn-download > span:not(.click-ripple) {
+  position: relative;
+  z-index: 1;
+}
+@keyframes button-ripple {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
 .btn-ghost:hover {
   background: rgba(99, 102, 241, 0.05);
   color: #0066ff;
@@ -1424,4 +1459,4 @@ button, input, textarea, select {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
-}/*# sourceMappingURL=styles.css.map */
+}
